@@ -1,13 +1,20 @@
 {
-  "name": "1",
+  "name": "ds-choco-bliss",
   "version": "1.0.0",
-  "description": "",
+  "description": "Full-Stack E-Commerce Application for DS Choco Bliss",
   "license": "ISC",
-  "author": "",
+  "author": "DS Choco Bliss",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": []
+  "keywords": ["ecommerce", "chocolate", "react", "nodejs", "mongodb"],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
