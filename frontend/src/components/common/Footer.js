@@ -41,10 +41,10 @@ const Footer = () => {
               Contact Info
             </Typography>
             <Typography variant="body2">
-              Email: info@dschocobliss.com
+              Email: diyanavani38@gmail.com
             </Typography>
             <Typography variant="body2">
-              Phone: (555) 123-4567
+              Phone: +91 9023974421
             </Typography>
           </Grid>
         </Grid>
