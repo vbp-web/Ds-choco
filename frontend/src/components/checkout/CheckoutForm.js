@@ -49,7 +49,7 @@ const CheckoutForm = () => {
   }, 0);
 
   const shippingCost = totalPrice > 50 ? 0 : 0;
-  const tax = totalPrice * 0.08; // 8% tax
+  const tax = totalPrice * 0; // 0% tax
   const finalTotal = totalPrice + shippingCost + tax;
 
   if (cart.length === 0) {
