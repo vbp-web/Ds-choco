@@ -27,12 +27,13 @@ const ProductForm = ({ product, onSuccess, onCancel }) => {
   const [error, setError] = useState('');
 
   const categories = [
-    'Dark Chocolate',
-    'Milk Chocolate',
-    'White Chocolate',
-    'Truffles',
-    'Bark',
-    'Gifts',
+     'Kunafa Special',
+     'Classic Chocolate Bars',
+     'Signature Blends',
+     'Inspired Bars',
+     'Premium Chocolate',
+     'Special Bar',
+     'Filling Chocolates',
   ];
 
   useEffect(() => {
