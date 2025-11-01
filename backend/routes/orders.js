@@ -4,10 +4,14 @@ const { auth } = require('../middleware/auth');
 
 const router = express.Router();
 
-// Get user orders
+// Get orders (all for admin, user's for regular users)
 router.get('/', auth, async (req, res) => {
   try {
-    const orders = await Order.find({ user: req.user._id })
+    let query = {};
+    if (req.user.role !== 'admin') {
+      query.user = req.user._id;
+    }
+    const orders = await Order.find(query)
       .populate('items.product')
       .sort({ createdAt: -1 });
     res.json(orders);
@@ -37,7 +41,7 @@ router.get('/:id', auth, async (req, res) => {
 // Create order
 router.post('/', auth, async (req, res) => {
   try {
-    const { items, shippingAddress, paymentMethod } = req.body;
+    const { items, shippingAddress, paymentMethod, paymentId } = req.body;
 
     // Calculate total amount
     let totalAmount = 0;
@@ -51,12 +55,13 @@ router.post('/', auth, async (req, res) => {
       totalAmount,
       shippingAddress,
       paymentMethod,
+      paymentStatus: paymentId ? 'paid' : 'pending',
     });
 
     await order.save();
     await order.populate('items.product');
 
-    res.status(201).json(order);
+    res.status(201).json({ success: true, order });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }

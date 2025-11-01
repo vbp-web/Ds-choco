@@ -57,6 +57,11 @@ const RazorpayCheckout = ({ amount, onSuccess, onError }) => {
                   ? item.product.sizes?.find(s => s.size === item.size)?.price || item.product.price
                   : item.product.price,
               })),
+              shippingAddress: {
+                firstName: user?.name?.split(' ')[0] || '',
+                lastName: user?.name?.split(' ')[1] || '',
+                email: user?.email || '',
+              },
               paymentId: response.razorpay_payment_id,
               paymentMethod: 'razorpay',
             };
