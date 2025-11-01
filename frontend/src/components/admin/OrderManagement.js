@@ -91,6 +91,8 @@ const OrderManagement = () => {
             <TableRow>
               <TableCell>Order ID</TableCell>
               <TableCell>Customer</TableCell>
+              <TableCell>Product Name</TableCell>
+              <TableCell>Customer Address</TableCell>
               <TableCell>Items</TableCell>
               <TableCell>Total</TableCell>
               <TableCell>Status</TableCell>
@@ -109,6 +111,26 @@ const OrderManagement = () => {
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {order.shippingAddress?.email}
+                    </Typography>
+                  </Box>
+                </TableCell>
+                <TableCell>
+                  {order.items?.map((item, index) => (
+                    <Typography key={index} variant="body2">
+                      {item.product?.name || 'Unknown Product'}
+                    </Typography>
+                  ))}
+                </TableCell>
+                <TableCell>
+                  <Box>
+                    <Typography variant="body2">
+                      {order.shippingAddress?.street || ''}
+                    </Typography>
+                    <Typography variant="body2">
+                      {order.shippingAddress?.city || ''}, {order.shippingAddress?.state || ''} {order.shippingAddress?.zipCode || ''}
+                    </Typography>
+                    <Typography variant="body2">
+                      {order.shippingAddress?.country || ''}
                     </Typography>
                   </Box>
                 </TableCell>
